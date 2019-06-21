@@ -19,10 +19,22 @@ class App extends Component {
     this.props.dispatch(actions.setData(this.props.data+1));
   }
 
+  create = (event) => {
+    event.preventDefault();
+    var newItemValue = this.refs.itemName.value;
+    
+    console.log(newItemValue)
+    this.props.dispatch(actions.create(newItemValue));
+  }
+
   render() {
     console.log('===== 3 =====')
 
     const data = this.props.data;
+    const todoItems = this.props.todoItems;
+
+    console.log(todoItems)
+
     return (
       <div>
         {data}
@@ -31,6 +43,12 @@ class App extends Component {
         <Component1 data={data}/>
         <Component2 />
         <Component3 />
+
+
+        <div className="todoapp">
+          <input type="text" ref="itemName" className="form-control" placeholder="add a new todo..."/>
+          <button onClick={this.create}>Add</button>
+        </div>
       </div>
     );
   }
@@ -39,6 +57,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     data: state.ProductInfo.data,
+    todoItems: state.ProductInfo.todoItems,
   };
 }
 
