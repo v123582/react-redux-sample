@@ -1,12 +1,8 @@
 import * as actions from './actions';
 import { combineReducers } from 'redux';
 
-function ProductInfo(state = {data: 0, todoItems: []}, action) {
+function TaskReducer(state = {todoItems: []}, action) {
   switch (action.type) {
-    case actions.SET_DATA: {
-      console.log('===== 6 =====')
-      return { ...state, data: action.data };
-    }
     case actions.CREATE: {
       return { ...state, todoItems: [...state.todoItems, action.data] };
     }
@@ -17,7 +13,7 @@ function ProductInfo(state = {data: 0, todoItems: []}, action) {
 }
 
 const reducer = combineReducers({
-  ProductInfo,
+  TaskReducer,
 });
 
 export default reducer;

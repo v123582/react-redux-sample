@@ -8,17 +8,6 @@ import Component3 from './Component3'
 
 class App extends Component {
 
-  componentWillMount(){
-    console.log('===== 2 =====')
-  }
-
-  handleClick = () => {
-    console.log('===== 4 =====')
-
-    console.log(this.props.data+1)
-    this.props.dispatch(actions.setData(this.props.data+1));
-  }
-
   create = (event) => {
     event.preventDefault();
     var newItemValue = this.refs.itemName.value;
@@ -28,26 +17,18 @@ class App extends Component {
   }
 
   render() {
-    console.log('===== 3 =====')
 
-    const data = this.props.data;
     const todoItems = this.props.todoItems;
-
     console.log(todoItems)
 
     return (
       <div>
-        {data}
-        <button onClick={this.handleClick}>Button</button>
-
-        <Component1 data={data}/>
-        <Component2 />
-        <Component3 />
-
-
         <div className="todoapp">
           <input type="text" ref="itemName" className="form-control" placeholder="add a new todo..."/>
           <button onClick={this.create}>Add</button>
+          {todoItems.map((d, i) => (
+            <li key={i}>{d}</li>
+          ))}
         </div>
       </div>
     );
@@ -56,8 +37,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    data: state.ProductInfo.data,
-    todoItems: state.ProductInfo.todoItems,
+    todoItems: state.TaskReducer.todoItems,
   };
 }
 
