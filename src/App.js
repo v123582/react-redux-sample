@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Provider, connect } from 'react-redux';
 import * as actions from './actions';
 
-import Component1 from './Component1'
-import Component2 from './Component2'
-import Component3 from './Component3'
-
 class App extends Component {
 
   componentWillMount(){
@@ -27,10 +23,6 @@ class App extends Component {
       <div>
         {data}
         <button onClick={this.handleClick}>Button</button>
-
-        <Component1 data={data}/>
-        <Component2 />
-        <Component3 />
       </div>
     );
   }
