@@ -6,6 +6,12 @@ function TaskReducer(state = {todoItems: []}, action) {
     case actions.CREATE: {
       return { ...state, todoItems: [...state.todoItems, action.data] };
     }
+
+    case actions.REMOVE: {
+      state.todoItems.filter((d, i) => i != action.data)
+      return { ...state, todoItems: [...state.todoItems, action.data] };
+    }
+
     default: {
       return state;
     }

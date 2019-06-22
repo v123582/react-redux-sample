@@ -16,6 +16,11 @@ class App extends Component {
     this.props.dispatch(actions.create(newItemValue));
   }
 
+  remove = (i) => {
+    console.log(i)
+    this.props.dispatch(actions.remove(i));
+  }
+
   render() {
 
     const todoItems = this.props.todoItems;
@@ -27,7 +32,7 @@ class App extends Component {
           <input type="text" ref="itemName" className="form-control" placeholder="add a new todo..."/>
           <button onClick={this.create}>Add</button>
           {todoItems.map((d, i) => (
-            <li key={i}>{d}</li>
+            <li key={i}>{d} <button onClick={() => this.remove(i)}>remove</button></li>
           ))}
         </div>
       </div>
