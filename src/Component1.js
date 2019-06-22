@@ -13,3 +13,14 @@ class Component1 extends Component {
 }
 
 export default Component1;
+
+// function Component1(props) {
+
+//   return (
+//     <div>
+//       Component3: {props.data}
+//     </div>
+//   );
+// }
+// 
+// export default Component1;
