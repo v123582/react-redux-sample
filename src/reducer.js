@@ -12,6 +12,11 @@ function TaskReducer(state = {todoItems: []}, action) {
       return { ...state, todoItems: [...state.todoItems, action.data] };
     }
 
+    case actions.GET_ALL: {
+      console.log('GET_ALL reducer')
+      return { ...state, todoItems: [...action.data] };
+    }
+
     default: {
       return state;
     }

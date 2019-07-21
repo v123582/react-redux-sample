@@ -8,6 +8,11 @@ import Component3 from './Component3'
 
 class App extends Component {
 
+  componentWillMount = () => {
+    console.log('componentWillMount')
+    actions.getTasks(this.props.dispatch);
+  }
+
   create = (event) => {
     event.preventDefault();
     var newItemValue = this.refs.itemName.value;
@@ -32,7 +37,7 @@ class App extends Component {
           <input type="text" ref="itemName" className="form-control" placeholder="add a new todo..."/>
           <button onClick={this.create}>Add</button>
           {todoItems.map((d, i) => (
-            <li key={i}>{d} <button onClick={() => this.remove(i)}>remove</button></li>
+            <li key={i}>{d.value} <button onClick={() => this.remove(i)}>remove</button></li>
           ))}
         </div>
       </div>
